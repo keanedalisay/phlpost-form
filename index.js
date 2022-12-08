@@ -6,7 +6,7 @@ const Page = {
     const input = e.target;
     const inputId = input.getAttribute("id");
     const label = document.querySelector(`[for=${inputId}]`);
-    label.classList.toggle("liftLabel");
+    label.classList.toggle("form-label-lift");
   },
   init() {
     Page.$.formInputs.forEach((formInput) => {
