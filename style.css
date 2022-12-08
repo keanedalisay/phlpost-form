@@ -13,6 +13,7 @@ html {
 
 .container {
   margin: 0 auto;
+  padding: 0 1rem;
   width: min(80rem, 100%);
 }
 .frame {
@@ -43,7 +44,8 @@ html {
   text-align: center;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
   font-style: italic;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #212121;
 }
 
 .section {
@@ -78,7 +80,8 @@ html {
   border: 0.1rem solid #212121;
   border-radius: 3rem;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  color: #212121;
 }
 .form-label {
   position: absolute;
@@ -87,18 +90,20 @@ html {
   content: "";
   background: #ffffff;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  color: #212121;
 }
 .form-button {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
-  width: 20rem;
+  width: min(20rem, 90%);
   height: 6rem;
   background: none;
   border: 0.1rem dashed #212121;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
   font-style: italic;
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  color: #212121;
 }
 
 .footer {
@@ -112,4 +117,5 @@ html {
   text-align: center;
   font-size: 1.2rem;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
+  color: #212121;
 }
