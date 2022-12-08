@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  src: local("☺︎"),
+    url("assets/fonts/rubik-v20-latin-regular.ttf") format("ttf"),
+    url("assets/fonts/rubik-v21-latin-regular.woff") format("woff"),
+    url("assets/fonts/rubik-v21-latin-regular.woff2") format("woff2"),
+    url("assets/fonts/rubik-v21-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/rubik-v21-latin-regular.svg#Rubik") format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: italic;
+  font-weight: 400;
+  src: local("☺︎"), url("assets/fonts/rubik-v20-latin-italic.ttf") format("ttf"),
+    url("assets/fonts/rubik-v21-latin-italic.woff") format("woff"),
+    url("assets/fonts/rubik-v21-latin-italic.woff2") format("woff2"),
+    url("assets/fonts/rubik-v21-latin-italic.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/rubik-v21-latin-italic.svg#Rubik") format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  src: local("☺︎"), url("assets/fonts/rubik-v20-latin-500.ttf") format("ttf"),
+    url("assets/fonts/rubik-v21-latin-500.woff") format("woff"),
+    url("assets/fonts/rubik-v21-latin-500.woff2") format("woff2"),
+    url("assets/fonts/rubik-v21-latin-500.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/rubik-v21-latin-500.svg#Rubik") format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 600;
+  src: local("☺︎"), url("assets/fonts/rubik-v20-latin-600.ttf") format("ttf"),
+    url("assets/fonts/rubik-v21-latin-600.woff") format("woff"),
+    url("assets/fonts/rubik-v21-latin-600.woff2") format("woff2"),
+    url("assets/fonts/rubik-v21-latin-600.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/rubik-v21-latin-600.svg#Rubik") format("svg");
+}
+
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 600;
+  src: local("☺︎"), url("assets/fonts/rubik-v20-latin-700.ttf") format("ttf"),
+    url("assets/fonts/rubik-v21-latin-700.woff") format("woff"),
+    url("assets/fonts/rubik-v21-latin-700.woff2") format("woff2"),
+    url("assets/fonts/rubik-v21-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    url("assets/fonts/rubik-v21-latin-700.svg#Rubik") format("svg");
+}
