@@ -3,8 +3,12 @@ import Validate from "./validate.js";
 const Page = {
   $: {
     formInputs: document.querySelectorAll(".form-input"),
+
     nameInput: document.querySelector("[data-slctr=nameInput]"),
     emailInput: document.querySelector("[data-slctr=emailInput]"),
+    countryInput: document.querySelector("[data-slctr=countryInput]"),
+    zipPostalInput: document.querySelector("[data-slctr=zipPostalInput]"),
+
     passwordInput: document.querySelector("[data-slctr=passwordInput]"),
     confirmPasswordInput: document.querySelector(
       "[data-slctr=confirmPasswordInput]"
@@ -68,7 +72,7 @@ const Page = {
     if (Validate.patternIsInvalid(Page.$.nameInput)) {
       Page.changeToInvalid(
         Page.$.nameInput,
-        "Numbers and symbols are not allowed"
+        "Numbers and symbols are not allowed."
       );
       return;
     }
@@ -94,6 +98,29 @@ const Page = {
 
     Page.changeToValid(Page.$.emailInput, "");
     return;
+  },
+  showCountryState() {
+    if (Validate.inputIsEmpty(Page.$.countryInput)) {
+      Page.changeToInvalid(
+        Page.$.countryInput,
+        "Must input the country you reside in."
+      );
+      return;
+    }
+
+    Page.changeToValid(Page.$.countryInput, "");
+    return;
+  },
+  showZipPostalState() {
+    if (Validate.inputIsEmpty(Page.$.zipPostalInput)) {
+      Page.changeToInvalid(
+        Page.$.zipPostalInput,
+        "Must input your current zip/postal code."
+      );
+      return;
+    }
+
+    Page.changeToValid(Page.$.zipPostalInput, "");
   },
   showPasswordState() {
     Page.showConfirmPasswordState();
@@ -126,7 +153,7 @@ const Page = {
     if (Validate.inputIsEmpty(Page.$.confirmPasswordInput)) {
       Page.changeToInvalid(
         Page.$.confirmPasswordInput,
-        "Must confirm your password"
+        "Must confirm your password."
       );
       return;
     }
@@ -157,8 +184,12 @@ const Page = {
       formInput.addEventListener("focus", Page.liftLabel);
       formInput.addEventListener("blur", Page.liftLabel);
     });
+
     Page.$.nameInput.addEventListener("input", Page.showNameState);
     Page.$.emailInput.addEventListener("input", Page.showEmailState);
+    Page.$.countryInput.addEventListener("input", Page.showCountryState);
+    Page.$.zipPostalInput.addEventListener("input", Page.showZipPostalState);
+
     Page.$.passwordInput.addEventListener("input", Page.showPasswordState);
     Page.$.confirmPasswordInput.addEventListener(
       "input",

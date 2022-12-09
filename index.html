@@ -42,12 +42,16 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="country">Country</label>
                     <input class="form-input" id="country" data-slctr="countryInput" type="text"
-                        placeholder="Country you reside in">
+                        placeholder="Country you reside in" required>
+                    <div class="form-stateLabel elem-hide" data-slctr="countryStateLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <div class="frame frame--input">
-                    <label class="form-label" for="zipCode">Zip Code</label>
-                    <input class="form-input" id="zipCode" data-slctr="zipCodeInput" type="text"
-                        placeholder="Zip code of your city/town">
+                    <label class="form-label" for="zipPostal">Zip/Postal Code</label>
+                    <input class="form-input" id="zipPostal" data-slctr="zipPostalInput" type="text"
+                        placeholder="Zip/Postal code of your city/town" required>
+                    <div class="form-stateLabel elem-hide" data-slctr="zipPostalStateLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <hr class="thBreak">
                 <div class="frame frame--input">
