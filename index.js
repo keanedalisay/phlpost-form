@@ -10,104 +10,122 @@ const Page = {
       "[data-slctr=confirmPasswordInput]"
     ),
   },
-  showNameError() {
-    const nameErrorLabel = document.querySelector(
-      "[data-slctr=nameErrorLabel]"
+  changeToValid(elem, text, showStateLabel) {
+    const inputID = elem.getAttribute("id");
+    const stateLabel = document.querySelector(
+      `[data-slctr=${inputID}StateLabel]`
     );
-    const nameErrorLabelSpan = document.querySelector(
-      "[data-slctr=nameErrorLabel] > span"
+    const stateLabelSpan = document.querySelector(
+      `[data-slctr=${inputID}StateLabel] > span`
+    );
+    const stateLabelIcon = document.querySelector(
+      `[data-slctr=${inputID}StateLabel] > object`
     );
 
+    elem.classList.add("form-input-valid");
+    elem.classList.remove("form-input-invalid");
+
+    showStateLabel
+      ? stateLabelIcon.classList.add("elem-hide")
+      : stateLabelIcon.classList.remove("elem-hide");
+
+    showStateLabel
+      ? stateLabel.classList.remove("elem-hide")
+      : stateLabel.classList.add("elem-hide");
+
+    stateLabel.classList.remove("form-stateLabel-invalid");
+    stateLabel.classList.add("form-stateLabel-valid");
+    stateLabelSpan.textContent = text;
+  },
+  changeToInvalid(elem, text) {
+    const inputID = elem.getAttribute("id");
+    const stateLabel = document.querySelector(
+      `[data-slctr=${inputID}StateLabel]`
+    );
+    const stateLabelSpan = document.querySelector(
+      `[data-slctr=${inputID}StateLabel] > span`
+    );
+    const stateLabelIcon = document.querySelector(
+      `[data-slctr=${inputID}StateLabel] > object`
+    );
+
+    elem.classList.add("form-input-invalid");
+    elem.classList.remove("form-input-valid");
+    stateLabel.classList.remove("elem-hide");
+
+    stateLabel.classList.add("form-stateLabel-invalid");
+    stateLabel.classList.remove("form-stateLabel-valid");
+    stateLabelIcon.classList.remove("elem-hide");
+    stateLabelSpan.textContent = text;
+  },
+
+  showNameState() {
     if (Validate.patternIsInvalid(Page.$.nameInput)) {
-      Page.$.nameInput.classList.add("form-input-invalid");
-      nameErrorLabel.classList.remove("elem-hide");
-      nameErrorLabelSpan.textContent = "Numbers and symbols are not allowed.";
+      Page.changeToInvalid(
+        Page.$.nameInput,
+        "Numbers and symbols are not allowed"
+      );
       return;
     }
 
-    Page.$.nameInput.classList.remove("form-input-invalid");
-    nameErrorLabel.classList.add("elem-hide");
-    nameErrorLabelSpan.textContent = "";
+    Page.changeToValid(Page.$.nameInput, "");
     return;
   },
-  showEmailError() {
+  showEmailState() {
     const emailInputValue = Page.$.emailInput.value;
-    const emailErrorLabel = document.querySelector(
-      "[data-slctr=emailErrorLabel]"
-    );
-    const emailErrorLabelSpan = document.querySelector(
-      "[data-slctr=emailErrorLabel] > span"
-    );
 
     if (Validate.patternIsInvalid(Page.$.emailInput)) {
-      Page.$.emailInput.classList.add("form-input-invalid");
-      emailErrorLabel.classList.remove("elem-hide");
-      emailErrorLabelSpan.textContent = `Must be a valid email. You entered ${emailInputValue}`;
+      Page.changeToInvalid(
+        Page.$.emailInput,
+        `Must be a valid email. You entered ${emailInputValue}`
+      );
       return;
     }
 
-    Page.$.emailInput.classList.remove("form-input-invalid");
-    emailErrorLabel.classList.add("elem-hide");
-    emailErrorLabelSpan.textContent = "";
+    Page.changeToValid(Page.$.emailInput, "");
     return;
   },
-  showPasswordError() {
-    Page.showConfirmPasswordError();
+  showPasswordState() {
+    Page.showConfirmPasswordState();
 
-    const passwordErrorLabel = document.querySelector(
-      "[data-slctr=passwordErrorLabel]"
-    );
-    const passwordErrorLabelSpan = document.querySelector(
-      "[data-slctr=passwordErrorLabel] > span"
-    );
     const firstPassword = Page.$.passwordInput.value;
 
     if (!Validate.passwordConditionsMet(firstPassword)) {
-      Page.$.passwordInput.classList.add("form-input-invalid");
-      Page.$.passwordInput.classList.remove("form-input-valid");
-      passwordErrorLabel.classList.remove("elem-hide");
-      passwordErrorLabelSpan.textContent =
-        "Must contain at least one uppercase, lowercase, and number character.";
+      Page.changeToInvalid(
+        Page.$.passwordInput,
+        "Must contain at least one uppercase, lowercase, and number character."
+      );
       return;
     }
 
     if (Validate.belowMinLength(Page.$.passwordInput)) {
-      Page.$.passwordInput.classList.add("form-input-invalid");
-      Page.$.passwordInput.classList.remove("form-input-valid");
-      passwordErrorLabel.classList.remove("elem-hide");
-      passwordErrorLabelSpan.textContent = `Must contain at least 6 characters of any type. You entered ${firstPassword.length}.`;
+      Page.changeToInvalid(
+        Page.$.passwordInput,
+        `Must contain at least 6 characters of any type. You entered ${firstPassword.length}.`
+      );
       return;
     }
 
-    Page.$.passwordInput.classList.remove("form-input-invalid");
-    Page.$.passwordInput.classList.add("form-input-valid");
-    passwordErrorLabel.classList.add("elem-hide");
-    passwordErrorLabelSpan.textContent = "";
+    Page.changeToValid(Page.$.passwordInput, "");
     return;
   },
-  showConfirmPasswordError() {
-    const confirmPasswordErrorLabel = document.querySelector(
-      "[data-slctr=confirmPasswordErrorLabel]"
-    );
-    const confirmPasswordErrorLabelSpan = document.querySelector(
-      "[data-slctr=confirmPasswordErrorLabel] > span"
-    );
+  showConfirmPasswordState() {
     const firstPassword = Page.$.passwordInput.value;
     const finalPassword = Page.$.confirmPasswordInput.value;
 
     if (Validate.passwordMatch(firstPassword, finalPassword)) {
-      Page.$.confirmPasswordInput.classList.remove("form-input-invalid");
-      Page.$.confirmPasswordInput.classList.add("form-input-valid");
-      confirmPasswordErrorLabel.classList.add("elem-hide");
-      confirmPasswordErrorLabelSpan.textContent = "";
+      Page.changeToValid(
+        Page.$.confirmPasswordInput,
+        "Password successfully matches.",
+        true
+      );
       return;
     }
 
-    Page.$.confirmPasswordInput.classList.add("form-input-invalid");
-    Page.$.confirmPasswordInput.classList.remove("form-input-valid");
-    confirmPasswordErrorLabel.classList.remove("elem-hide");
-    confirmPasswordErrorLabelSpan.textContent =
-      "Password does not match previous password.";
+    Page.changeToInvalid(
+      Page.$.confirmPasswordInput,
+      "Password does not match previous password."
+    );
     return;
   },
   liftLabel(e) {
@@ -121,12 +139,12 @@ const Page = {
       formInput.addEventListener("focus", Page.liftLabel);
       formInput.addEventListener("blur", Page.liftLabel);
     });
-    Page.$.nameInput.addEventListener("input", Page.showNameError);
-    Page.$.emailInput.addEventListener("input", Page.showEmailError);
-    Page.$.passwordInput.addEventListener("input", Page.showPasswordError);
+    Page.$.nameInput.addEventListener("input", Page.showNameState);
+    Page.$.emailInput.addEventListener("input", Page.showEmailState);
+    Page.$.passwordInput.addEventListener("input", Page.showPasswordState);
     Page.$.confirmPasswordInput.addEventListener(
       "input",
-      Page.showConfirmPasswordError
+      Page.showConfirmPasswordState
     );
   },
 };

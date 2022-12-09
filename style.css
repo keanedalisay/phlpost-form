@@ -111,11 +111,11 @@ html {
   box-shadow: 0 0.4rem 0.4rem var(--silver);
   outline: none;
 }
-.form-input-invalid {
-  border: 0.1rem solid var(--red-ribbon);
-}
 .form-input-valid {
   border: 0.1rem solid var(--lima);
+}
+.form-input-invalid {
+  border: 0.1rem solid var(--red-ribbon);
 }
 .form-label {
   position: absolute;
@@ -132,23 +132,33 @@ html {
 .form-label-lift {
   transform: translateY(-0.5rem);
 }
-.form-errorLabel {
+.form-stateLabel {
   margin-top: 1rem;
   width: min(27.5rem, 100%);
   min-height: 3.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.1rem solid var(--red-ribbon);
+  border: 0.1rem solid var(--silver);
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
   font-size: 1.2rem;
-  color: var(--red-ribbon);
+  color: var(--silver);
   overflow: hidden;
 }
-.form-errorLabel > * {
+.form-stateLabel-valid {
+  border: 0.1rem solid var(--lima);
+  color: var(--lima);
+}
+.form-stateLabel-invalid {
+  border: 0.1rem solid var(--red-ribbon);
+  color: var(--red-ribbon);
+}
+.form-stateLabel > * {
   margin: 0 0.3rem;
 }
-.form-errorLabel > span {
+.form-stateLabel > span {
+  width: 80%;
+  text-align: center;
   overflow: hidden;
 }
 .form-button {
