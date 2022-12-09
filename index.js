@@ -60,6 +60,11 @@ const Page = {
   },
 
   showNameState() {
+    if (Validate.inputIsEmpty(Page.$.nameInput)) {
+      Page.changeToInvalid(Page.$.nameInput, "Must input your fullname.");
+      return;
+    }
+
     if (Validate.patternIsInvalid(Page.$.nameInput)) {
       Page.changeToInvalid(
         Page.$.nameInput,
@@ -73,6 +78,11 @@ const Page = {
   },
   showEmailState() {
     const emailInputValue = Page.$.emailInput.value;
+
+    if (Validate.inputIsEmpty(Page.$.emailInput)) {
+      Page.changeToInvalid(Page.$.emailInput, "Must input your email.");
+      return;
+    }
 
     if (Validate.patternIsInvalid(Page.$.emailInput)) {
       Page.changeToInvalid(
@@ -112,6 +122,14 @@ const Page = {
   showConfirmPasswordState() {
     const firstPassword = Page.$.passwordInput.value;
     const finalPassword = Page.$.confirmPasswordInput.value;
+
+    if (Validate.inputIsEmpty(Page.$.confirmPasswordInput)) {
+      Page.changeToInvalid(
+        Page.$.confirmPasswordInput,
+        "Must confirm your password"
+      );
+      return;
+    }
 
     if (Validate.passwordMatch(firstPassword, finalPassword)) {
       Page.changeToValid(
