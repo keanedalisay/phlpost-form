@@ -1,8 +1,10 @@
 :root {
   --prim-black: #212121;
   --white: #ffffff;
-  --prim-blue: #2b3e8d;
+  --bay-of-many: #2b3e8d;
   --silver: #c7c7c7;
+  --red-ribbon: #d60b40;
+  --lima: #54e625;
 
   --th-bkgrd: var(--prim-black);
   --dft-elem-bkgrd: var(--white);
@@ -88,10 +90,11 @@ html {
 }
 .frame--input {
   margin: 2rem 0;
+  width: min(27.5rem, 100%);
 }
 .form-input {
   padding: 0.5rem 2rem;
-  width: min(30rem, 100%);
+  width: min(27.5rem, 100%);
   height: 5rem;
   border: 0.1rem solid var(--dft-bdr-clr);
   border-radius: 3rem;
@@ -108,6 +111,12 @@ html {
   box-shadow: 0 0.4rem 0.4rem var(--silver);
   outline: none;
 }
+.form-input-invalid {
+  border: 0.1rem solid var(--red-ribbon);
+}
+.form-input-valid {
+  border: 0.1rem solid var(--lima);
+}
 .form-label {
   position: absolute;
   top: -1.2rem;
@@ -122,6 +131,25 @@ html {
 }
 .form-label-lift {
   transform: translateY(-0.5rem);
+}
+.form-errorLabel {
+  margin-top: 1rem;
+  width: min(27.5rem, 100%);
+  min-height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid var(--red-ribbon);
+  font-family: "Rubik", "Helvetica", "Arial", sans-serif;
+  font-size: 1.2rem;
+  color: var(--red-ribbon);
+  overflow: hidden;
+}
+.form-errorLabel > * {
+  margin: 0 0.3rem;
+}
+.form-errorLabel > span {
+  overflow: hidden;
 }
 .form-button {
   margin-top: 3rem;
@@ -140,7 +168,7 @@ html {
 .form-button:hover,
 .form-button:focus {
   border: 0.1rem dashed transparent;
-  background: var(--prim-blue);
+  background: var(--bay-of-many);
   color: var(--white);
   cursor: pointer;
   outline: none;
@@ -159,4 +187,8 @@ html {
   font-size: 1.2rem;
   font-family: "Rubik", "Helvetica", "Arial", sans-serif;
   color: var(--dft-txt-clr);
+}
+
+.elem-hide {
+  display: none;
 }

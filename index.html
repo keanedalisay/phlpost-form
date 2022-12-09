@@ -8,7 +8,7 @@
     <link href="assets/imgs/phlpost-sticker.png" rel="shortcut icon">
     <link href="style.css" rel="stylesheet">
     <link href="fonts.css" rel="stylesheet">
-    <script src="index.js" defer></script>
+    <script src="index.js" type="module" defer></script>
     <title>PHLPost Form</title>
 </head>
 
@@ -26,12 +26,17 @@
 
                 <div class="frame frame--input">
                     <label class="form-label" for="name">Name</label>
-                    <input class="form-input" id="name" data-slctr="nameInput" type="text" placeholder="Adam Maharlika">
+                    <input class="form-input" id="name" data-slctr="nameInput" type="text" pattern="[A-Za-z]*"
+                        placeholder="Adam Maharlika">
+                    <div class="form-errorLabel elem-hide" data-slctr="nameErrorLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <div class="frame frame--input">
                     <label class="form-label" for="email">Email</label>
                     <input class="form-input" id="email" data-slctr="emailInput" type="email"
-                        placeholder="adam@youremail.com">
+                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][a-z]{2,}$" placeholder="adam@youremail.com">
+                    <div class="form-errorLabel elem-hide" data-slctr="emailErrorLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <div class="frame frame--input">
                     <label class="form-label" for="country">Country</label>
@@ -43,16 +48,20 @@
                     <input class="form-input" id="zipCode" data-slctr="zipCodeInput" type="text"
                         placeholder="Zip code of your city/town">
                 </div>
-                <hr class="thbreak">
+                <hr class="thBreak">
                 <div class="frame frame--input">
                     <label class="form-label" for="password">Password</label>
                     <input class="form-input" id="password" data-slctr="passwordInput" type="password"
-                        placeholder="Your password">
+                        placeholder="Your password" minlength="6" required>
+                    <div class="form-errorLabel elem-hide" data-slctr="passwordErrorLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <div class="frame frame--input">
                     <label class="form-label" for="confirmPassword">Confirm</label>
                     <input class="form-input" id="confirmPassword" data-slctr="confirmPasswordInput" type="password"
-                        placeholder="Confirm your password">
+                        placeholder="Confirm your password" minlength="6" required>
+                    <div class="form-errorLabel elem-hide" data-slctr="confirmPasswordErrorLabel"><object
+                            data="assets/svgs/error-icon.svg" type="text/svg+xml">Error!</object><span></span></div>
                 </div>
                 <button class="form-button" data-slctr="submitFormBtn" type="submit">
                     SUBMIT
