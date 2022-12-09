@@ -2,6 +2,7 @@ import Validate from "./validate.js";
 
 const Page = {
   $: {
+    form: document.querySelector("[data-slctr=form]"),
     formInputs: document.querySelectorAll(".form-input"),
 
     nameInput: document.querySelector("[data-slctr=nameInput]"),
@@ -14,6 +15,41 @@ const Page = {
       "[data-slctr=confirmPasswordInput]"
     ),
   },
+
+  checkFormValidity(e) {
+    e.preventDefault();
+
+    if (Validate.isValid(Page.$.form)) return;
+
+    if (!Validate.isValid(Page.$.nameInput))
+      Page.changeToInvalid(Page.$.nameInput, "Must input your fullname.");
+    if (!Validate.isValid(Page.$.emailInput))
+      Page.changeToInvalid(Page.$.emailInput, "Must input your email.");
+    if (!Validate.isValid(Page.$.countryInput))
+      Page.changeToInvalid(
+        Page.$.countryInput,
+        "Must input the country you reside in."
+      );
+    if (!Validate.isValid(Page.$.zipPostalInput))
+      Page.changeToInvalid(
+        Page.$.zipPostalInput,
+        "Must input your current zip/postal code."
+      );
+
+    if (!Validate.isValid(Page.$.passwordInput))
+      Page.changeToInvalid(
+        Page.$.passwordInput,
+        "Must contain at least one uppercase, lowercase, and number character."
+      );
+    if (!Validate.isValid(Page.$.confirmPasswordInput))
+      Page.changeToInvalid(
+        Page.$.confirmPasswordInput,
+        "Must confirm your password."
+      );
+
+    return;
+  },
+
   changeToValid(elem, text, showStateLabel) {
     const inputID = elem.getAttribute("id");
     const stateLabel = document.querySelector(
@@ -195,6 +231,8 @@ const Page = {
       "input",
       Page.showConfirmPasswordState
     );
+
+    Page.$.form.addEventListener("submit", Page.checkFormValidity);
   },
 };
 

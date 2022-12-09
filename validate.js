@@ -1,4 +1,9 @@
 class Validate {
+  static isValid(elem) {
+    if (elem.checkValidity()) return true;
+    return false;
+  }
+
   static patternIsInvalid(elem) {
     if (elem.validity.patternMismatch) return true;
     return false;
