@@ -1,4 +1,5 @@
 import Validate from "./validate.js";
+import formCompletePage from "./formCompletePage.js";
 
 const Page = {
   $: {
@@ -19,7 +20,10 @@ const Page = {
   checkFormValidity(e) {
     e.preventDefault();
 
-    if (Validate.isValid(Page.$.form)) return;
+    if (Validate.isValid(Page.$.form)) {
+      formCompletePage.load();
+      return;
+    }
 
     if (!Validate.isValid(Page.$.nameInput))
       Page.changeToInvalid(Page.$.nameInput, "Must input your fullname.");

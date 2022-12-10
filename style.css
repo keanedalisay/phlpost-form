@@ -40,6 +40,14 @@ html {
   background: var(--th-bkgrd);
   border: none;
 }
+.icon {
+  width: 10rem;
+  height: 10rem;
+}
+.icon--highFive {
+  width: clamp(25rem, 50vw, 30rem);
+  height: clamp(25rem, 50vw, 30rem);
+}
 
 .header {
   margin-top: 3rem;
@@ -52,6 +60,13 @@ html {
 .header-logo {
   margin: 1.5rem 0;
   width: min(60rem, 80vw);
+}
+.header-title {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-family: "Rubik", "Helvetica", "Arial", sans-serif;
+  font-size: clamp(6rem, 7vw, 8rem);
+  color: var(--dft-txt-clr);
 }
 .header-subtitle {
   margin: 1.5rem 0;
@@ -70,6 +85,10 @@ html {
   justify-content: center;
   align-items: center;
 }
+.section--greeting {
+  height: 55vh;
+}
+
 .form {
   margin: 5rem 0;
   position: relative;
