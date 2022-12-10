@@ -29,7 +29,8 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="name">Name</label>
                     <input class="form-input" id="name" data-slctr="nameInput" type="text" pattern="[A-Za-z\s]*"
-                        placeholder="Adam Emanuel Maharlika" required>
+                        placeholder="Adam Emanuel Maharlika" autocomplete="given-name additional-name family-name"
+                        required>
                     <div class="form-stateLabel elem-hide" data-slctr="nameStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
@@ -38,7 +39,7 @@
                     <label class="form-label" for="email">Email</label>
                     <input class="form-input" id="email" data-slctr="emailInput" type="email"
                         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][a-z]{2,}$" placeholder="adam@youremail.com"
-                        required>
+                        autocomplete="email" required>
                     <div class="form-stateLabel elem-hide" data-slctr="emailStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
@@ -46,7 +47,7 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="country">Country</label>
                     <input class="form-input" id="country" data-slctr="countryInput" type="text"
-                        placeholder="Country you reside in" required>
+                        placeholder="Country you reside in" autocomplete="country-name" required>
                     <div class="form-stateLabel elem-hide" data-slctr="countryStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
@@ -54,7 +55,7 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="zipPostal">Zip/Postal Code</label>
                     <input class="form-input" id="zipPostal" data-slctr="zipPostalInput" type="text"
-                        placeholder="Zip/Postal code of your city/town" required>
+                        placeholder="Zip/Postal code of your city/town" autocomplete="postal-code" required>
                     <div class="form-stateLabel elem-hide" data-slctr="zipPostalStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
@@ -63,7 +64,7 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="password">Password</label>
                     <input class="form-input" id="password" data-slctr="passwordInput" type="password"
-                        placeholder="Your password" minlength="6" required>
+                        placeholder="Your password" minlength="6" autocomplete="new-password" required>
                     <div class="form-stateLabel elem-hide" data-slctr="passwordStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
@@ -71,7 +72,7 @@
                 <div class="frame frame--input">
                     <label class="form-label" for="confirmPassword">Confirm</label>
                     <input class="form-input" id="confirmPassword" data-slctr="confirmPasswordInput" type="password"
-                        placeholder="Confirm your password" minlength="6" required>
+                        placeholder="Confirm your password" minlength="6" autocomplete="off" required>
                     <div class="form-stateLabel elem-hide" data-slctr="confirmPasswordStateLabel"><object
                             data="assets/svgs/error-icon.svg" type="text/svg+xml"
                             tabindex="-1">Error!</object><span></span></div>
