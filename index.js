@@ -37,6 +37,11 @@ const Page = {
   },
 
   showCountryAutofillOptions() {
+    if (!Page.$.countryInput.value) {
+      Page.$.countryAutofill.classList.add("elem-hide");
+      return;
+    }
+
     Page.$.countryAutofill.classList.remove("elem-hide");
     Page.$.countryAutofill.innerHTML = "";
 
