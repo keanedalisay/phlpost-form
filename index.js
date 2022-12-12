@@ -1,5 +1,12 @@
 import Validate from "./validate.js";
+import Country from "./country.js";
 import formCompletePage from "./formCompletePage.js";
+
+const delegateEvent = (parent, event, slctr, handler) => {
+  parent.addEventListener(event, (e) => {
+    if (e.target.matches(slctr)) handler(e);
+  });
+};
 
 const Page = {
   $: {
@@ -15,6 +22,30 @@ const Page = {
     confirmPasswordInput: document.querySelector(
       "[data-slctr=confirmPasswordInput]"
     ),
+
+    countryAutofill: document.querySelector("[data-slctr=countryAutofill]"),
+  },
+
+  setCountryInputValue(e) {
+    const countryBtn = e.target;
+    const countryBtnID = countryBtn.id;
+    Page.$.countryInput.value = countryBtnID;
+
+    Page.$.countryAutofill.classList.add("elem-hide");
+    return;
+  },
+
+  showCountryAutofillOptions() {
+    Page.$.countryAutofill.classList.remove("elem-hide");
+    Page.$.countryAutofill.innerHTML = "";
+
+    const countryValue = Page.$.countryInput.value;
+    const countryNames = Country.getCountryNames(countryValue);
+
+    for (const country of countryNames) {
+      const countryBtn = Country.createBtn(country);
+      Page.$.countryAutofill.appendChild(countryBtn);
+    }
   },
 
   checkFormValidity(e) {
@@ -237,6 +268,18 @@ const Page = {
     );
 
     Page.$.form.addEventListener("submit", Page.checkFormValidity);
+
+    delegateEvent(
+      Page.$.countryAutofill,
+      "click",
+      "[data-slctr=countryBtn]",
+      Page.setCountryInputValue
+    );
+
+    Page.$.countryInput.addEventListener(
+      "input",
+      Page.showCountryAutofillOptions
+    );
   },
 };
 
