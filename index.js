@@ -11,6 +11,7 @@ const delegateEvent = (parent, event, slctr, handler) => {
 const Page = {
   $: {
     form: document.querySelector("[data-slctr=form]"),
+    submitFormBtn: document.querySelector("[data-slctr=submitFormBtn]"),
     formInputs: document.querySelectorAll(".form-input"),
 
     nameInput: document.querySelector("[data-slctr=nameInput]"),
@@ -267,7 +268,11 @@ const Page = {
       Page.showConfirmPasswordState
     );
 
-    Page.$.form.addEventListener("submit", Page.checkFormValidity);
+    Page.$.form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+
+    Page.$.submitFormBtn.addEventListener("click", Page.checkFormValidity);
 
     delegateEvent(
       Page.$.countryAutofill,
